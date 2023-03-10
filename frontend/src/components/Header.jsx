@@ -54,7 +54,7 @@ function Header() {
         </div>
       </nav>
 
-      <nav class="navbar navbar-dark bg-dark">
+      <nav class="navbar navbar-dark bg-dark lower">
         <a
           class="btn btn-primary"
           data-bs-toggle="offcanvas"

@@ -30,24 +30,30 @@ class PurchaseRepository:
         return Response(status=200)
 
     def get_purchase(self, id):
-        for p in self.purchases:
-            if id == p.id:
-                return jsonify({
-                    "id": p.id,
-                    "id_user": p.id_user,
-                    "id_book": p.id_book
-                })
-        return Response(400)
+        data = []
+        try:
+            for p in self.purchases:
+                if int(id) == int(p.id):
+                    return jsonify({
+                        "id": p.id,
+                        "id_user": p.id_user,
+                        "id_book": p.id_book
+                    })
+        except Exception as e:
+            print(e)
+            return Response(status=400)
+        return Response(500)
 
     def get_purchase_by_user(self, id):
+        data = []
         for p in self.purchases:
             if id == p.id_user:
-                return jsonify({
+                data.append({
                     "id": p.id,
                     "id_user": p.id_user,
                     "id_book": p.id_book
                 })
-        return Response(400)
+        return jsonify(data)
 
     @staticmethod
     def check_data(data):

@@ -17,3 +17,22 @@
     padding: 0 3rem;
     margin-bottom: 5.5rem;
 }
+
+.lower{
+    background-color: #191919 !important;
+}
+
+.btn-outline-success {
+    border-color:  rgb(208, 168, 10);
+    color: rgb(208, 168, 10);
+}
+
+.btn-outline-success:hover {
+    background-color: rgba(212, 171, 7, 0.19);
+    border-color:  rgb(208, 168, 10);
+}
+
+.btn-outline-success:focus {
+    background-color: rgba(212, 171, 7, 0.19);
+    border: none !important;
+}

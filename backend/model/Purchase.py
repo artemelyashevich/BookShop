@@ -16,4 +16,4 @@ class Purchase(db.Model):
         self.id_book = id_book
 
     def __repr__(self):
-        return "Purchase № " + self.id + "\nUser_id: " + self.id_user
+        return "Purchase id:  " + str(self.id) + "\nUser_id: " + str(self.id_user) + "\nBook_id: " + str(self.id_book)

@@ -1,6 +1,11 @@
+
 from flask import jsonify, abort, Response
 
 from backend.model.Book import Book
+
+UPLOAD_FOLDER = 'C:\\Users\\37529\\PycharmProjects\\BookShop\\frontend\\src\\static\\img'
+
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 
 class BookRepository:
@@ -127,6 +132,15 @@ class BookRepository:
 
     def count(self):
         return len(self.db.session.query(Book).all())
+
+    def download(self, id):
+        book = self.search_by_id(id)
+        return book.img
+
+    @staticmethod
+    def allowed_file(filename):
+        return '.' in filename and \
+               filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
     @staticmethod
     def check_data(data):
