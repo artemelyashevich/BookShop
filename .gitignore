@@ -1,3 +1,4 @@
 /.idea
 /venv
 /backend/config.py
+__pycache__
