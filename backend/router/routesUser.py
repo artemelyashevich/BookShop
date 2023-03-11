@@ -39,7 +39,6 @@ def upload_img():
     return Response(status=200)
 
 
-
 @app.errorhandler(500)
 def server_error(e):
     return 'Server error'
