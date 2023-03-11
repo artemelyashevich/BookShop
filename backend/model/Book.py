@@ -1,4 +1,6 @@
 from flask import jsonify
+
+from backend.config import default_img
 from backend.database.cfg import db
 
 
@@ -11,7 +13,7 @@ class Book(db.Model):
     price = db.Column(db.Float, nullable=False)
     category = db.Column(db.String)
     img = db.Column(db.String, nullable=True,
-                    default="C:\\Users\\37529\\PycharmProjects\\BookShop\\backend\\action\\path\\to\\the\\uploads\\photo_2023-01-28_15-50-29.jpg")
+                    default=default_img)
 
     def __init__(self, title, author, price, category):
         self.title = title

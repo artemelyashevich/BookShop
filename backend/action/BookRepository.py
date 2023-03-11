@@ -1,11 +1,6 @@
-
 from flask import jsonify, abort, Response
-
+from backend.config import path, ALLOWED_EXTENSIONS
 from backend.model.Book import Book
-
-UPLOAD_FOLDER = 'C:\\Users\\37529\\PycharmProjects\\BookShop\\frontend\\src\\static\\img'
-
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 
 class BookRepository:
@@ -23,7 +18,9 @@ class BookRepository:
                 "id": book.id,
                 "title": book.title,
                 "author": book.author,
-                "price": book.price
+                "price": book.price,
+                "category": book.category,
+                "img": book.img
             })
         return jsonify(data)
 
@@ -36,7 +33,8 @@ class BookRepository:
                     "title": book.title,
                     "author": book.author,
                     "price": book.price,
-                    "category": book.category})
+                    "category": book.category,
+                    "img": book.img})
         return data
 
     def get_books_by_genre(self, genre):
@@ -48,7 +46,8 @@ class BookRepository:
                     "title": book.title,
                     "author": book.author,
                     "price": book.price,
-                    "category": book.category})
+                    "category": book.category,
+                    "img": book.img})
         return data
 
     def get_books_by_filter(self, last, filter, param):
@@ -87,6 +86,7 @@ class BookRepository:
             book.author = data["author"]
             book.price = data["price"]
             book.category = data["category"]
+            book.img = data["img"]
 
             self.db.session.commit()
 
@@ -136,6 +136,12 @@ class BookRepository:
     def download(self, id):
         book = self.search_by_id(id)
         return book.img
+
+    def set_img(self, id, data):
+        book = self.search_by_id(id)
+        book.img = data
+        self.db.session.commit()
+        return Response(status=200)
 
     @staticmethod
     def allowed_file(filename):

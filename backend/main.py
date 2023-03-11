@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 
-from backend.action.BookRepository import UPLOAD_FOLDER
+from backend.config import UPLOAD_FOLDER
 from backend.database.cfg import db
 
 app = Flask(__name__)

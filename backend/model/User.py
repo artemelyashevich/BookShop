@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash
 
 from flask import jsonify
 
+from backend.config import default_user
 from backend.database.cfg import db
 
 
@@ -15,6 +16,7 @@ class User(db.Model):
     email = db.Column(db.String, nullable=False)
     password = db.Column(db.String)
     date = db.Column(db.DateTime, default=datetime.utcnow)
+    img = db.Column(db.String, default=default_user)
 
     def __init__(self, name, surname, email, password):
         self.name = name
@@ -24,9 +26,11 @@ class User(db.Model):
 
     def convert_to_json(self):
         return jsonify({
+            "id": int(self.id),
             "name": self.name,
             "surname": self.surname,
             "email": self.email,
+            "img": self.img,
         })
 
     @staticmethod

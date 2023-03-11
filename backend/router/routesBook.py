@@ -39,18 +39,6 @@ def update_book(id):
     return bookRepository.update(id, request.get_json())
 
 
-@app.route("/books/by")
-def get_books_by_author():
-    author = request.args.get("author")
-    return bookRepository.get_books_by_author(author)
-
-
-@app.route("/books/by/")
-def get_books_by_genre():
-    genre = request.args.get("genre")
-    return bookRepository.get_books_by_genre(genre)
-
-
 @app.route("/books/search_by/")
 def get_books_by_filter():
     last = request.args.get("last")
@@ -59,17 +47,17 @@ def get_books_by_filter():
     return bookRepository.get_books_by_filter(last, filter, param)
 
 
-@app.route("/books/upload", methods=["POST"])
+@app.route("/book/img/upload/<id>", methods=["POST"])
 def upload_file():
-    print("fwefwefwrf")
     file = request.files["file"]
     print(file)
     if file and bookRepository.allowed_file(file.filename):
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+        bookRepository.set_img(id=id, data=file.name)
     return Response(status=200)
 
 
-@app.route("/book/download/<id>", methods=["GET"])
+@app.route("/book/download/img/<id>", methods=["GET"])
 def download(id):
     path = bookRepository.download(id)
     return send_file(path, as_attachment=True)
