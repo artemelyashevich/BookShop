@@ -15,11 +15,12 @@ class Book(db.Model):
     img = db.Column(db.String, nullable=True,
                     default=default_img)
 
-    def __init__(self, title, author, price, category):
+    def __init__(self, title, author, price, category, img):
         self.title = title
         self.author = author
         self.price = price
         self.category = category
+        self.img = img
 
     def convert_to_json(self):
         return jsonify(

@@ -53,7 +53,6 @@ class BookRepository:
     def get_books_by_filter(self, last, filter, param):
         try:
             if filter == "category":
-                print("+")
                 data = []
                 print(len(self.get_books_by_genre(param)))
                 if len(self.get_books_by_genre(param)) > int(last):
@@ -63,8 +62,7 @@ class BookRepository:
                         return data
                 else:
                     return self.get_books_by_genre(param)
-            else:
-                print("-")
+            elif filter == "author":
                 data = []
                 print(len(self.get_books_by_author(param)))
                 if len(self.get_books_by_author(param)) > int(last):
@@ -105,7 +103,8 @@ class BookRepository:
                 title=data["title"],
                 author=data["author"],
                 category=data["category"],
-                price=data["price"]
+                price=data["price"],
+                img=data["img"]
             )
             self.db.session.add(book)
             self.db.session.commit()
