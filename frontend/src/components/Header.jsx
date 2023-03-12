@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-import "./static/header.css";
+import "./static/header.scss";
 
 function Header() {
   return (
@@ -53,90 +53,7 @@ function Header() {
           </div>
         </div>
       </nav>
-
-      <nav class="navbar navbar-dark bg-dark lower">
-        <a
-          class="btn btn-primary"
-          data-bs-toggle="offcanvas"
-          href="#offcanvasExample"
-          role="button"
-          aria-controls="offcanvasExample"
-        >
-          All
-        </a>
-
-        <div
-          class="offcanvas offcanvas-start"
-          tabindex="-1"
-          id="offcanvasExample"
-          aria-labelledby="offcanvasExampleLabel"
-        >
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">
-              BookShop
-            </h5>
-            <button
-              type="button"
-              class="btn-close text-reset"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="offcanvas-body">
-            <div class="dropdown">
-              <a
-                class="btn btn-secondary dropdown-toggle"
-                href="#"
-                role="button"
-                id="dropdownMenuLink"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Categories
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Programming
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Art
-                  </a>
-                </li>
-            
-              </ul>
-            </div>
-
-            <div class="dropdown">
-              <a
-                class="btn btn-secondary dropdown-toggle"
-                href="#"
-                role="button"
-                id="dropdownMenuLink"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Profile
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Sign in
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Your account
-                  </a>
-                </li>
-            
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <div className="lower"></div>
     </>
   );
 }

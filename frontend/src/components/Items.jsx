@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllBooks } from "../redux/products";
-import "./static/item.css"
+import "./static/item.scss";
 
 export default function Items() {
   const { books, status, error } = useSelector((store) => store.products);
@@ -14,19 +14,18 @@ export default function Items() {
 
   return (
     <>
-    <div className="item">
-    {error ? error : ''}
-      {status === 'loading' && '...loading'}
-      <ul>
-        {books.map((item) => (
-          <li key={item["id"]}><p>{item["title"]}</p>
-          <img src={item["img"]} alt="" />
-          </li>
-        ))}
-      </ul>
-
-    </div>
-  
+      <div className="items">
+        {error ? error : ""}
+        {status === "loading" && "...loading"}
+        <ul>
+          {books.map((item) => (
+            <li className="item" key={item["id"]}>
+                <img src={item["img"]} alt="" />
+                <p className="title">{item["title"]}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }

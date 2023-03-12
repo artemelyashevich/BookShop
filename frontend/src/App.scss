@@ -1,0 +1,31 @@
+$bg-color: #222;
+$bg-color-card: #dfdfdf;
+$bg-color-lower: #111;
+$bg-color-hover: #1111;
+$text-color: #fff;
+$text-color-card: #000;
+$border-color: rgba(255, 255, 255, 0.766);
+$border-color-hover: rgba(183, 183, 183, 0.766);
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  background: $bg-color;
+  background-position: center center;
+
+  background-size: cover;
+ 
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+

@@ -1,0 +1,9 @@
+@import "../../App.scss";
+
+.leftbar {
+    margin-top: -1rem;
+    position: absolute;
+    width: calc(100% / 4);
+    height: 50rem;
+    background-color: #fff;
+}
